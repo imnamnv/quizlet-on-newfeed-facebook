@@ -1,0 +1,35 @@
+{
+  "manifest_version": 3,
+  "name": "Mixi Crawl Extension",
+  "description": "Mixi Crawl Extension!",
+  "version": "1.0.2",
+  "icons": {
+    "16": "icon.png",
+    "48": "icon.png",
+    "128": "icon.png"
+  },
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "React Extension",
+    "default_icon": "icon.png"
+  },
+  "options_page": "options.html",
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "js": ["intercept.js"],
+      "matches": [ "http://www.facebook.com/*", "https://www.facebook.com/*", "http://web.facebook.com/*", "https://web.facebook.com/*" ],
+      "run_at": "document_start"
+
+    },
+    {
+      "matches": [ "http://www.facebook.com/*", "https://www.facebook.com/*", "http://web.facebook.com/*", "https://web.facebook.com/*" ],
+      "js": ["contentScript.js"],
+      "run_at": "document_idle"
+    }
+  ],
+  "permissions": ["alarms","storage"],
+  "host_permissions": ["*://*/*"]
+}
