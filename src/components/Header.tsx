@@ -6,27 +6,59 @@ import {
   Select,
 } from "@material-ui/core";
 import { makeStyles, Theme } from "@material-ui/core/styles";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import Button from "./common/Button";
+
+import {
+  Context as CategoryContext,
+  InitState,
+  ROOT_STATUS,
+} from "../context/CategoryContext";
 
 const useStyles = makeStyles((theme: Theme) => ({
   root: {
+    width: "100%",
     display: "flex",
+    alignItems: "center",
+    padding: theme.spacing(1),
+
+    "&.MuiInputLabel-outlined": {
+      color: "black",
+    },
   },
   formControl: {
     margin: theme.spacing(1),
     minWidth: 120,
+    width: "70%",
+  },
+  select: {
+    "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
+      borderColor: "black",
+    },
   },
 }));
 
 export default () => {
+  const { state, setCurrentCategory, setCurrentStatus } =
+    useContext<InitState>(CategoryContext);
   const classes = useStyles();
-  const [category, setCategory] = useState("");
 
   const handleChange = (
     event: React.ChangeEvent<{ name?: string; value: string }>
   ) => {
-    setCategory(event.target.value);
+    setCurrentCategory({ name: event.target.value });
+  };
+
+  const handleOnAdd = () => {
+    setCurrentStatus({
+      currentStatus: ROOT_STATUS.ADDING,
+    });
+  };
+
+  const handleOnEdit = () => {
+    setCurrentStatus({
+      currentStatus: ROOT_STATUS.EDITING,
+    });
   };
 
   return (
@@ -36,25 +68,28 @@ export default () => {
         variant="outlined"
         className={classes.formControl}
       >
-        <InputLabel htmlFor="outlined-age-native-simple">Age</InputLabel>
+        <InputLabel htmlFor="outlined-category-native-simple">
+          Category
+        </InputLabel>
         <Select
+          className={classes.select}
           native
-          value={category}
+          value={state.currentCategory}
           onChange={handleChange}
           label="Category"
           inputProps={{
-            name: "age",
-            id: "outlined-age-native-simple",
+            name: "category",
+            id: "outlined-category-native-simple",
           }}
         >
-          <option value={10}>Ten</option>
-          <option value={20}>Twenty</option>
-          <option value={30}>Thirty</option>
+          {state.categoryList.map((category) => {
+            return <option value={category.name}>{category.name}</option>;
+          })}
         </Select>
       </FormControl>
 
-      <Button title="Add" />
-      <Button title="Edit" />
+      <Button title="Add" handleOnClick={handleOnAdd} />
+      <Button title="Edit" handleOnClick={handleOnEdit} />
     </Box>
   );
 };

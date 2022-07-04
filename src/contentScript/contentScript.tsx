@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import ReactDOM from "react-dom";
 import Container from "../components/Container";
+import { Provider } from "../context/CategoryContext";
 import "./contentScript.css";
 
 function isAlreadyInjected() {
@@ -29,7 +30,9 @@ const App = () => {
 
   return (
     <div id="namnv">
-      <Container feed={feed.parentElement} />
+      <Provider>
+        <Container feed={feed.parentElement} />
+      </Provider>
     </div>
   );
 };

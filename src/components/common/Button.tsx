@@ -5,11 +5,17 @@ type Props = {
   title: string;
   handleOnClick?: () => void;
 };
+
 export default ({ title, handleOnClick }: Props) => {
   return (
     <Button
+      style={{
+        height: 40,
+        marginLeft: 8,
+        marginRight: 8,
+        border: "solid 1px #93a7a0",
+      }}
       variant="outlined"
-      color="primary"
       size="small"
       onClick={handleOnClick}
     >
