@@ -1,6 +1,6 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import ReactDOM from "react-dom";
-import FlashCard from "../components/FlashCard";
+import Container from "../components/Container";
 import "./contentScript.css";
 
 function isAlreadyInjected() {
@@ -10,24 +10,15 @@ function isAlreadyInjected() {
 let feed = document.querySelector<HTMLElement>("[role=feed]");
 let region = document.querySelector<HTMLElement>("[role=region]");
 
-if (feed && region) {
-  feed.innerHTML = "";
-  region.innerHTML = "";
-}
-
 const App = () => {
+  const [rerender, setRerender] = useState(false);
   useEffect(() => {
     const interval = setInterval(() => {
       if (!isAlreadyInjected()) {
         feed = document.querySelector<HTMLElement>("[role=feed]");
         region = document.querySelector<HTMLElement>("[role=region]");
-
-        if (feed && region) {
-          feed.innerHTML = "";
-          region.innerHTML = "";
-
-          ReactDOM.render(<FlashCard />, feed);
-        }
+        setRerender(true);
+        if (feed === null || region === null) return;
       }
     }, 1000);
 
@@ -36,7 +27,11 @@ const App = () => {
     };
   }, []);
 
-  return <div id="nfe-container"></div>;
+  return (
+    <div id="namnv">
+      <Container feed={feed.parentElement} />
+    </div>
+  );
 };
 
 const root = document.createElement("div");

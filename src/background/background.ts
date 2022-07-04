@@ -1,3 +1,1 @@
-chrome.runtime.onInstalled.addListener(() => {
-  console.log("Hello world");
-});
+chrome.runtime.onInstalled.addListener(() => {});
