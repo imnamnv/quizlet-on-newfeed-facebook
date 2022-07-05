@@ -13,6 +13,7 @@ let region = document.querySelector<HTMLElement>("[role=region]");
 
 const App = () => {
   const [rerender, setRerender] = useState(false);
+
   useEffect(() => {
     const interval = setInterval(() => {
       if (!isAlreadyInjected()) {

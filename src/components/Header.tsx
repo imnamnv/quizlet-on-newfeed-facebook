@@ -82,8 +82,12 @@ export default () => {
             id: "outlined-category-native-simple",
           }}
         >
-          {state.categoryList.map((category) => {
-            return <option value={category.name}>{category.name}</option>;
+          {state.categoryList.map((category, index) => {
+            return (
+              <option key={index} value={category.name}>
+                {category.name}
+              </option>
+            );
           })}
         </Select>
       </FormControl>

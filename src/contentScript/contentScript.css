@@ -1,5 +1,5 @@
 #nfe-container{
-  max-height: 500px;
+  min-height: 500px;
   padding: 10px;
   background-color: rgb(193, 218, 210);
   display: flex;
