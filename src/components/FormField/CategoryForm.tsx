@@ -1,4 +1,4 @@
-import { Box, Button } from "@material-ui/core";
+import { Box } from "@material-ui/core";
 import React, { useContext } from "react";
 import { useForm } from "react-hook-form";
 import { InitState, ROOT_STATUS } from "../../context/CategoryContext";
@@ -6,6 +6,7 @@ import { Category } from "../../models";
 import AddListField from "./AddListField";
 import InputField from "./InputField";
 import { Context as CategoryContext } from "../../context/CategoryContext";
+import Button from "../common/Button";
 
 export interface CategoryFormProps {
   initialValues: Category;
@@ -40,13 +41,18 @@ export default ({ initialValues, onSubmit }: CategoryFormProps) => {
 
         <AddListField name="data" control={control} label={"Item List"} />
 
-        <Box mt={3}>
-          <Button type="submit" disabled={isSubmitting}>
-            Save
-          </Button>
-          <Button onClick={handleCancelFormSubmit} disabled={isSubmitting}>
-            Cancel
-          </Button>
+        <Box display={"flex"} justifyContent={"flex-end"}>
+          <Box mt={1} mr={1}>
+            <Button title="Save" type="submit" disabled={isSubmitting} />
+          </Box>
+          <Box mt={1}>
+            <Button
+              title="Cancel"
+              handleOnClick={handleCancelFormSubmit}
+              disabled={isSubmitting}
+              color={"secondary"}
+            />
+          </Box>
         </Box>
       </form>
     </Box>

@@ -14,34 +14,51 @@ export default ({ name, control, label }: ItemListFieldProps) => {
   const { fields, append, remove } = useFieldArray({ name, control });
   return (
     <Box>
-      <Typography variant="h5">{label}</Typography>
+      <Box
+        display={"flex"}
+        alignItems={"center"}
+        justifyContent="space-between"
+        marginY={1}
+      >
+        <Typography variant="h5">{label}</Typography>
 
-      <Button
-        title="Add new item"
-        handleOnClick={() => {
-          append({
-            id: fields.length,
-            front: "",
-            back: "",
-          });
-        }}
-      />
+        <Button
+          title="Add new item"
+          handleOnClick={() => {
+            append({
+              id: fields.length,
+              front: "",
+              back: "",
+            });
+          }}
+        />
+      </Box>
 
       {fields.map((field, idx) => {
         return (
           <Box key={field.id}>
             <Typography variant="subtitle1">Item {idx + 1}</Typography>
-            <InputField
-              name={`${name}.${idx}.front` as const}
-              control={control}
-              label="Front"
+            <Box marginY={1}>
+              <InputField
+                name={`${name}.${idx}.front` as const}
+                control={control}
+                label="Front"
+              />
+            </Box>
+
+            <Box marginY={1}>
+              <InputField
+                name={`${name}.${idx}.back` as const}
+                control={control}
+                label="Back"
+              />
+            </Box>
+
+            <Button
+              title="Remove"
+              color="secondary"
+              handleOnClick={() => remove(idx)}
             />
-            <InputField
-              name={`${name}.${idx}.back` as const}
-              control={control}
-              label="Back"
-            />
-            <Button title="Remove" handleOnClick={() => remove(idx)} />
           </Box>
         );
       })}

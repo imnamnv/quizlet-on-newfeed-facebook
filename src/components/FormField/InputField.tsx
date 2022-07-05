@@ -18,7 +18,6 @@ export default ({ name, control, label, ...inputProps }: InputFieldProps) => {
     <TextField
       fullWidth
       size="small"
-      margin="normal"
       value={value ?? ""}
       onChange={onChange}
       onBlur={onBlur}

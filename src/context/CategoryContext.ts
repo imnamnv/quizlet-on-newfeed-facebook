@@ -31,7 +31,7 @@ const categoryReducer = (state: InitState, action: ActionType) => {
     case ROOT_ACTION.SET_CURRENT_CATEGORY:
       return {
         ...state,
-        currentCategory: action.payload,
+        currentCategory: +action.payload,
       };
     case ROOT_ACTION.SET_CURRENT_STATUS:
       return {
@@ -42,12 +42,14 @@ const categoryReducer = (state: InitState, action: ActionType) => {
       return {
         ...state,
         categoryList: [...state.categoryList, action.payload],
+        currentCategory: +action.payload.id,
       };
     case ROOT_ACTION.UPDATE_CATEGORY:
       const newCategoryList = state.categoryList.map((category: Category) => {
         if (category.id === action.payload.id) {
           return {
             ...category,
+            name: action.payload.name,
             data: action.payload.data,
           };
         }
@@ -63,10 +65,10 @@ const categoryReducer = (state: InitState, action: ActionType) => {
 };
 
 const setCurrentCategory = (dispatch: React.Dispatch<ActionType>) => {
-  return ({ name }: { name: string }) => {
+  return ({ id }: { id: string | number }) => {
     dispatch({
       type: ROOT_ACTION.SET_CURRENT_CATEGORY,
-      payload: name,
+      payload: id,
     });
   };
 };
@@ -107,7 +109,7 @@ export const { Provider, Context } = createDataContext(
     updateCategory,
   },
   {
-    currentCategory: "Job Interview",
+    currentCategory: 0,
     categoryList: [jobInterView, food],
     currentStatus: ROOT_STATUS.LEARNING,
   }

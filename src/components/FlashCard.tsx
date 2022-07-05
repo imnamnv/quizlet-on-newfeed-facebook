@@ -10,7 +10,7 @@ export default () => {
   const { state } = useContext<InitState>(CategoryContext);
 
   const data = state.categoryList.find((category) => {
-    return category.name === state.currentCategory;
+    return category.id === state.currentCategory;
   });
 
   return (

@@ -4,20 +4,23 @@ import React from "react";
 type Props = {
   title: string;
   handleOnClick?: () => void;
+  type?: "submit" | "button";
+  disabled?: boolean;
+  color?: "inherit" | "primary" | "secondary" | "default";
 };
 
-export default ({ title, handleOnClick }: Props) => {
+export default ({ title, handleOnClick, type, disabled, color }: Props) => {
   return (
     <Button
+      type={type || "button"}
       style={{
         height: 40,
-        marginLeft: 8,
-        marginRight: 8,
-        border: "solid 1px #93a7a0",
       }}
-      variant="outlined"
+      variant="contained"
       size="small"
       onClick={handleOnClick}
+      disabled={disabled}
+      color={color || "primary"}
     >
       {title}
     </Button>

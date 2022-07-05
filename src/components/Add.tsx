@@ -13,7 +13,7 @@ export default () => {
 
   const initialValues: Category = {
     name: "",
-    data: [{ id: 1, front: "", back: "" }],
+    data: [{ id: 0, front: "", back: "" }],
   };
 
   const handleCategoryFormSubmit = (formValue: Category) => {
@@ -22,6 +22,7 @@ export default () => {
     });
 
     setCurrentStatus({ currentStatus: ROOT_STATUS.LEARNING });
+    window.scrollTo(0, 0);
   };
   return (
     <Box width="100%">

@@ -36,6 +36,10 @@ const useStyles = makeStyles((theme: Theme) => ({
       borderColor: "black",
     },
   },
+  button: {
+    marginLeft: 8,
+    marginRight: 8,
+  },
 }));
 
 export default () => {
@@ -46,7 +50,7 @@ export default () => {
   const handleChange = (
     event: React.ChangeEvent<{ name?: string; value: string }>
   ) => {
-    setCurrentCategory({ name: event.target.value });
+    setCurrentCategory({ id: event.target.value });
   };
 
   const handleOnAdd = () => {
@@ -84,7 +88,7 @@ export default () => {
         >
           {state.categoryList.map((category, index) => {
             return (
-              <option key={index} value={category.name}>
+              <option key={index} value={category.id}>
                 {category.name}
               </option>
             );
@@ -92,8 +96,12 @@ export default () => {
         </Select>
       </FormControl>
 
-      <Button title="Add" handleOnClick={handleOnAdd} />
-      <Button title="Edit" handleOnClick={handleOnEdit} />
+      <Box className={classes.button}>
+        <Button title="Add" handleOnClick={handleOnAdd} />
+      </Box>
+      <Box className={classes.button}>
+        <Button title="Edit" handleOnClick={handleOnEdit} />
+      </Box>
     </Box>
   );
 };
