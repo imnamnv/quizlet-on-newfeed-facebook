@@ -11,6 +11,7 @@ import Add from "./Add";
 import Edit from "./Edit";
 import FlashCard from "./FlashCard";
 import Header from "./Header";
+import Import from "./Import";
 
 export default ({ feed }: { feed: HTMLElement }) => {
   const { state, setState } = useContext<InitState & InitStateAction>(
@@ -32,6 +33,7 @@ export default ({ feed }: { feed: HTMLElement }) => {
       {state?.currentStatus === ROOT_STATUS.LEARNING && <FlashCard />}
       {state?.currentStatus === ROOT_STATUS.ADDING && <Add />}
       {state?.currentStatus === ROOT_STATUS.EDITING && <Edit />}
+      {state?.currentStatus === ROOT_STATUS.IMPORTING && <Import />}
     </div>,
     feed
   );

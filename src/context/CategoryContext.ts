@@ -18,6 +18,7 @@ export const enum ROOT_STATUS {
   LEARNING,
   ADDING,
   EDITING,
+  IMPORTING,
 }
 
 export interface InitState {

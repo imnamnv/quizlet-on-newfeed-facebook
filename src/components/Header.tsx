@@ -1,5 +1,11 @@
 import React, { useContext, useEffect, useState } from "react";
-import { Box, FormControl, InputLabel, Select } from "@material-ui/core";
+import {
+  Box,
+  FormControl,
+  InputLabel,
+  Select,
+  Button as ButtonMUI,
+} from "@material-ui/core";
 import { makeStyles, Theme } from "@material-ui/core/styles";
 import Button from "./common/Button";
 
@@ -11,6 +17,7 @@ import {
 } from "../context/CategoryContext";
 import Dialog from "./common/Dialog";
 import { getInitState } from "../utils/storage";
+import { convertToCategoryList } from "../utils/array";
 
 const useStyles = makeStyles((theme: Theme) => ({
   root: {
@@ -42,8 +49,13 @@ const useStyles = makeStyles((theme: Theme) => ({
 export default () => {
   const [openDialog, setOpenDialog] = useState<boolean>(false);
 
-  const { state, setCurrentCategory, setCurrentStatus, deleteCategory } =
-    useContext<InitState & InitStateAction>(CategoryContext);
+  const {
+    state,
+    setCurrentCategory,
+    setCurrentStatus,
+    deleteCategory,
+    addNewCategory,
+  } = useContext<InitState & InitStateAction>(CategoryContext);
 
   const classes = useStyles();
 
@@ -62,6 +74,12 @@ export default () => {
   const handleOnEdit = () => {
     setCurrentStatus({
       currentStatus: ROOT_STATUS.EDITING,
+    });
+  };
+
+  const handleOnImport = () => {
+    setCurrentStatus({
+      currentStatus: ROOT_STATUS.IMPORTING,
     });
   };
 
@@ -122,6 +140,10 @@ export default () => {
           color="secondary"
           handleOnClick={handleOpenDialog}
         />
+      </Box>
+
+      <Box className={classes.button}>
+        <Button title={"Import"} handleOnClick={handleOnImport} />
       </Box>
 
       <Dialog
