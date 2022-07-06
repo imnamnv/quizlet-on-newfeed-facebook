@@ -5,7 +5,7 @@ export interface Item {
 }
 
 export interface Category {
-  id?: string;
+  id?: number;
   name: string;
   data: Item[];
 }

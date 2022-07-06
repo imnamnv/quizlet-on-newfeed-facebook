@@ -3,14 +3,16 @@ import React, { useContext } from "react";
 import {
   Context as CategortContext,
   InitState,
+  InitStateAction,
   ROOT_STATUS,
 } from "../context/CategoryContext";
 import { Category } from "../models";
 import CategoryForm from "./FormField/CategoryForm";
 
 export default () => {
-  const { state, updateCategory, setCurrentStatus } =
-    useContext<InitState>(CategortContext);
+  const { state, updateCategory, setCurrentStatus } = useContext<
+    InitState & InitStateAction
+  >(CategortContext);
 
   const { id, data, name } = state.categoryList.find((category: Category) => {
     return category.id === state.currentCategory;

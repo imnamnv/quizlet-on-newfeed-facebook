@@ -4,12 +4,13 @@ import {
   Context as CategoryContext,
   InitState,
 } from "../context/CategoryContext";
+import { Category } from "../models";
 import { shuffleAray } from "../utils/array";
 
 export default () => {
   const { state } = useContext<InitState>(CategoryContext);
 
-  const data = state.categoryList.find((category) => {
+  const data = state.categoryList.find((category: Category) => {
     return category.id === state.currentCategory;
   });
 

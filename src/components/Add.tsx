@@ -4,12 +4,15 @@ import { Category } from "../models";
 import CategoryForm from "./FormField/CategoryForm";
 import {
   Context as CategoryContext,
+  InitState,
+  InitStateAction,
   ROOT_STATUS,
 } from "../context/CategoryContext";
 
 export default () => {
-  const { state, addNewCategory, setCurrentStatus } =
-    useContext(CategoryContext);
+  const { state, addNewCategory, setCurrentStatus } = useContext<
+    InitState & InitStateAction
+  >(CategoryContext);
 
   const initialValues: Category = {
     name: "",

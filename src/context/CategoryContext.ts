@@ -3,12 +3,15 @@ import createDataContext, { ActionType } from "./createDataContext";
 import jobInterView from "../assets/txt/jobInterview.json";
 import food from "../assets/txt/food.json";
 import { Category } from "../models";
+import { setInitState } from "../utils/storage";
 
 const ROOT_ACTION = {
   SET_CURRENT_CATEGORY: "set_current_category",
   SET_CURRENT_STATUS: "set_current_status",
   ADD_NEW_CATEGORY: "add_new_category",
   UPDATE_CATEGORY: "update_category",
+  DELETE_CATEGORY: "delete_category",
+  SET_INIT_STATE: "set_init_state",
 };
 
 export const enum ROOT_STATUS {
@@ -19,32 +22,61 @@ export const enum ROOT_STATUS {
 
 export interface InitState {
   state: {
-    currentCategory: string;
+    currentCategory: number;
     categoryList: Category[];
     currentStatus: ROOT_STATUS;
   };
   [key: string]: any;
 }
 
-const categoryReducer = (state: InitState, action: ActionType) => {
+export interface InitStateAction {
+  setCurrentCategory: (payload: { id: number }) => void;
+  setCurrentStatus: (payload: { currentStatus: ROOT_STATUS }) => void;
+  addNewCategory: (payload: { newCategory: Category }) => void;
+  updateCategory: (payload: { category: Category }) => void;
+  deleteCategory: (payload: { id: number }) => void;
+  setState: (payload: { initState: InitState }) => void;
+}
+
+const categoryReducer = (
+  state: {
+    currentCategory: number;
+    categoryList: Category[];
+    currentStatus: ROOT_STATUS;
+  },
+  action: ActionType
+) => {
   switch (action.type) {
-    case ROOT_ACTION.SET_CURRENT_CATEGORY:
-      return {
+    case ROOT_ACTION.SET_CURRENT_CATEGORY: {
+      const newState = {
         ...state,
-        currentCategory: +action.payload,
+        currentCategory: action.payload,
       };
-    case ROOT_ACTION.SET_CURRENT_STATUS:
-      return {
+
+      setInitState({ state: newState });
+      return newState;
+    }
+    case ROOT_ACTION.SET_CURRENT_STATUS: {
+      const newState = {
         ...state,
         currentStatus: action.payload,
       };
-    case ROOT_ACTION.ADD_NEW_CATEGORY:
-      return {
+
+      setInitState({ state: newState });
+      return newState;
+    }
+
+    case ROOT_ACTION.ADD_NEW_CATEGORY: {
+      const newState = {
         ...state,
         categoryList: [...state.categoryList, action.payload],
-        currentCategory: +action.payload.id,
+        currentCategory: action.payload.id,
       };
-    case ROOT_ACTION.UPDATE_CATEGORY:
+
+      setInitState({ state: newState });
+      return newState;
+    }
+    case ROOT_ACTION.UPDATE_CATEGORY: {
       const newCategoryList = state.categoryList.map((category: Category) => {
         if (category.id === action.payload.id) {
           return {
@@ -55,10 +87,35 @@ const categoryReducer = (state: InitState, action: ActionType) => {
         }
         return category;
       });
-      return {
+
+      const newState = {
         ...state,
         categoryList: newCategoryList,
       };
+
+      setInitState({ state: newState });
+      return newState;
+    }
+    case ROOT_ACTION.DELETE_CATEGORY: {
+      const newCategoryList = state.categoryList.filter(
+        (category: Category) => {
+          return category.id !== action.payload;
+        }
+      );
+
+      const newState = {
+        ...state,
+        currentCategory: 0,
+        categoryList: newCategoryList,
+      };
+
+      setInitState({ state: newState });
+      return newState;
+    }
+    case ROOT_ACTION.SET_INIT_STATE: {
+      return action.payload.state;
+    }
+
     default:
       return state;
   }
@@ -100,6 +157,24 @@ const updateCategory = (dispatch: React.Dispatch<ActionType>) => {
   };
 };
 
+const deleteCategory = (dispatch: React.Dispatch<ActionType>) => {
+  return ({ id }: { id: number }) => {
+    dispatch({
+      type: ROOT_ACTION.DELETE_CATEGORY,
+      payload: id,
+    });
+  };
+};
+
+const setState = (dispatch: React.Dispatch<ActionType>) => {
+  return ({ initState }: { initState: InitState }) => {
+    dispatch({
+      type: ROOT_ACTION.SET_INIT_STATE,
+      payload: initState,
+    });
+  };
+};
+
 export const { Provider, Context } = createDataContext(
   categoryReducer,
   {
@@ -107,6 +182,8 @@ export const { Provider, Context } = createDataContext(
     setCurrentStatus,
     addNewCategory,
     updateCategory,
+    deleteCategory,
+    setState,
   },
   {
     currentCategory: 0,

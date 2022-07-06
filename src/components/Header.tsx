@@ -1,19 +1,16 @@
-import {
-  Box,
-  FormControl,
-  InputLabel,
-  MenuItem,
-  Select,
-} from "@material-ui/core";
+import React, { useContext, useEffect, useState } from "react";
+import { Box, FormControl, InputLabel, Select } from "@material-ui/core";
 import { makeStyles, Theme } from "@material-ui/core/styles";
-import React, { useContext, useState } from "react";
 import Button from "./common/Button";
 
 import {
   Context as CategoryContext,
   InitState,
+  InitStateAction,
   ROOT_STATUS,
 } from "../context/CategoryContext";
+import Dialog from "./common/Dialog";
+import { getInitState } from "../utils/storage";
 
 const useStyles = makeStyles((theme: Theme) => ({
   root: {
@@ -43,14 +40,17 @@ const useStyles = makeStyles((theme: Theme) => ({
 }));
 
 export default () => {
-  const { state, setCurrentCategory, setCurrentStatus } =
-    useContext<InitState>(CategoryContext);
+  const [openDialog, setOpenDialog] = useState<boolean>(false);
+
+  const { state, setCurrentCategory, setCurrentStatus, deleteCategory } =
+    useContext<InitState & InitStateAction>(CategoryContext);
+
   const classes = useStyles();
 
-  const handleChange = (
+  const handleCaregoryChange = (
     event: React.ChangeEvent<{ name?: string; value: string }>
   ) => {
-    setCurrentCategory({ id: event.target.value });
+    setCurrentCategory({ id: +event.target.value });
   };
 
   const handleOnAdd = () => {
@@ -63,6 +63,19 @@ export default () => {
     setCurrentStatus({
       currentStatus: ROOT_STATUS.EDITING,
     });
+  };
+
+  const handleOnDelete = () => {
+    deleteCategory({ id: +state.currentCategory });
+    setOpenDialog(false);
+  };
+
+  const handleOpenDialog = () => {
+    setOpenDialog(true);
+  };
+
+  const handleOnCloseDialog = () => {
+    setOpenDialog(false);
   };
 
   return (
@@ -79,13 +92,14 @@ export default () => {
           className={classes.select}
           native
           value={state.currentCategory}
-          onChange={handleChange}
+          onChange={handleCaregoryChange}
           label="Category"
           inputProps={{
             name: "category",
             id: "outlined-category-native-simple",
           }}
         >
+          <option value={-1}>Select Category</option>
           {state.categoryList.map((category, index) => {
             return (
               <option key={index} value={category.id}>
@@ -102,6 +116,20 @@ export default () => {
       <Box className={classes.button}>
         <Button title="Edit" handleOnClick={handleOnEdit} />
       </Box>
+      <Box className={classes.button}>
+        <Button
+          title={"Delete"}
+          color="secondary"
+          handleOnClick={handleOpenDialog}
+        />
+      </Box>
+
+      <Dialog
+        open={openDialog}
+        handleClose={handleOnCloseDialog}
+        title="Are you sure to delete?"
+        handleConfirm={handleOnDelete}
+      />
     </Box>
   );
 };
