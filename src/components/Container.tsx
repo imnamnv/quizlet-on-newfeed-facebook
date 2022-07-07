@@ -1,3 +1,4 @@
+import { Typography } from "@material-ui/core";
 import React, { useContext, useEffect } from "react";
 import ReactDOM from "react-dom";
 import {
@@ -34,6 +35,12 @@ export default ({ feed }: { feed: HTMLElement }) => {
       {state?.currentStatus === ROOT_STATUS.ADDING && <Add />}
       {state?.currentStatus === ROOT_STATUS.EDITING && <Edit />}
       {state?.currentStatus === ROOT_STATUS.IMPORTING && <Import />}
+      <Typography
+        style={{ fontStyle: "italic", alignSelf: "flex-end", color: "#6e6f6f" }}
+        variant="body2"
+      >
+        By NamNV
+      </Typography>
     </div>,
     feed
   );
