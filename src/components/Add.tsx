@@ -1,7 +1,9 @@
-import { Box, Container } from "@material-ui/core";
 import React, { useContext } from "react";
+import { Box, Container } from "@material-ui/core";
+import { v4 as uuidv4 } from "uuid";
 import { Category } from "../models";
 import CategoryForm from "./FormField/CategoryForm";
+
 import {
   Context as CategoryContext,
   InitState,
@@ -16,12 +18,12 @@ export default () => {
 
   const initialValues: Category = {
     name: "",
-    data: [{ id: 0, front: "", back: "" }],
+    data: [{ id: uuidv4(), front: "", back: "" }],
   };
 
   const handleCategoryFormSubmit = (formValue: Category) => {
     addNewCategory({
-      newCategory: { id: state.categoryList.length, ...formValue },
+      newCategory: { id: uuidv4(), ...formValue },
     });
 
     setCurrentStatus({ currentStatus: ROOT_STATUS.LEARNING });

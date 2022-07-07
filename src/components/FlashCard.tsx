@@ -10,8 +10,8 @@ import { shuffleAray } from "../utils/array";
 export default () => {
   const { state } = useContext<InitState>(CategoryContext);
 
-  const data = state.categoryList.find((category: Category) => {
-    return category.id === state.currentCategory;
+  const data = state.categoryList?.find((category: Category) => {
+    return category?.id === state.currentCategory;
   });
 
   return (

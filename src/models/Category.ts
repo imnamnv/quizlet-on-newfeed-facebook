@@ -1,11 +1,11 @@
 export interface Item {
-  id?: number;
+  id?: string;
   front: string;
   back: string;
 }
 
 export interface Category {
-  id?: number;
+  id?: string;
   name: string;
   data: Item[];
 }

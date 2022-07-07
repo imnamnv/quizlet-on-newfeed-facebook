@@ -14,12 +14,12 @@ export default () => {
     InitState & InitStateAction
   >(CategortContext);
 
-  const { id, data, name } = state.categoryList.find((category: Category) => {
-    return category.id === state.currentCategory;
+  const { id, data, name } = state.categoryList?.find((category: Category) => {
+    return category?.id === state?.currentCategory;
   });
   const initialValue: Category = {
     name,
-    data,
+    data: data || [],
   };
 
   const handleCategoryFormSubmit = (formValue: Category) => {

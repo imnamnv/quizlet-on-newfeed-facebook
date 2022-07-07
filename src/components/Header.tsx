@@ -49,20 +49,15 @@ const useStyles = makeStyles((theme: Theme) => ({
 export default () => {
   const [openDialog, setOpenDialog] = useState<boolean>(false);
 
-  const {
-    state,
-    setCurrentCategory,
-    setCurrentStatus,
-    deleteCategory,
-    addNewCategory,
-  } = useContext<InitState & InitStateAction>(CategoryContext);
+  const { state, setCurrentCategory, setCurrentStatus, deleteCategory } =
+    useContext<InitState & InitStateAction>(CategoryContext);
 
   const classes = useStyles();
 
   const handleCaregoryChange = (
     event: React.ChangeEvent<{ name?: string; value: string }>
   ) => {
-    setCurrentCategory({ id: +event.target.value });
+    setCurrentCategory({ id: event.target.value });
   };
 
   const handleOnAdd = () => {
@@ -84,7 +79,7 @@ export default () => {
   };
 
   const handleOnDelete = () => {
-    deleteCategory({ id: +state.currentCategory });
+    deleteCategory({ id: state.currentCategory });
     setOpenDialog(false);
   };
 
@@ -117,7 +112,9 @@ export default () => {
             id: "outlined-category-native-simple",
           }}
         >
-          <option value={-1}>Select Category</option>
+          <option style={{ fontStyle: "italic" }} value={"-1"}>
+            Select Category
+          </option>
           {state.categoryList.map((category, index) => {
             return (
               <option key={index} value={category.id}>
@@ -134,13 +131,15 @@ export default () => {
       <Box className={classes.button}>
         <Button title="Edit" handleOnClick={handleOnEdit} />
       </Box>
-      <Box className={classes.button}>
-        <Button
-          title={"Delete"}
-          color="secondary"
-          handleOnClick={handleOpenDialog}
-        />
-      </Box>
+      {state.currentStatus === ROOT_STATUS.LEARNING && (
+        <Box className={classes.button}>
+          <Button
+            title={"Delete"}
+            color="secondary"
+            handleOnClick={handleOpenDialog}
+          />
+        </Box>
+      )}
 
       <Box className={classes.button}>
         <Button title={"Import"} handleOnClick={handleOnImport} />

@@ -1,5 +1,5 @@
-import { Box } from "@material-ui/core";
 import React, { useContext } from "react";
+import { Box } from "@material-ui/core";
 import { useForm } from "react-hook-form";
 import { InitState, ROOT_STATUS } from "../../context/CategoryContext";
 import { Category } from "../../models";
@@ -41,7 +41,7 @@ export default ({ initialValues, onSubmit }: CategoryFormProps) => {
 
         <AddListField name="data" control={control} label={"Item List"} />
 
-        <Box display={"flex"} justifyContent={"flex-end"}>
+        <Box display={"flex"} justifyContent={"flex-end"} mb={3}>
           <Box mt={1} mr={1}>
             <Button title="Save" type="submit" disabled={isSubmitting} />
           </Box>

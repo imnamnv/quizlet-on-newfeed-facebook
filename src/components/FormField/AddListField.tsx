@@ -1,5 +1,6 @@
-import { Box, Typography } from "@material-ui/core";
 import React from "react";
+import { v4 as uuidv4 } from "uuid";
+import { Box, Typography } from "@material-ui/core";
 import { Control, useFieldArray } from "react-hook-form";
 import Button from "../common/Button";
 import InputField from "./InputField";
@@ -26,7 +27,7 @@ export default ({ name, control, label }: ItemListFieldProps) => {
           title="Add new item"
           handleOnClick={() => {
             append({
-              id: fields.length,
+              id: uuidv4(),
               front: "",
               back: "",
             });

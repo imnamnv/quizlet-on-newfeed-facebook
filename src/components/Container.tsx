@@ -36,7 +36,13 @@ export default ({ feed }: { feed: HTMLElement }) => {
       {state?.currentStatus === ROOT_STATUS.EDITING && <Edit />}
       {state?.currentStatus === ROOT_STATUS.IMPORTING && <Import />}
       <Typography
-        style={{ fontStyle: "italic", alignSelf: "flex-end", color: "#6e6f6f" }}
+        style={{
+          fontStyle: "italic",
+          alignSelf: "flex-end",
+          color: "#6e6f6f",
+          position: "absolute",
+          bottom: 8,
+        }}
         variant="body2"
       >
         By NamNV

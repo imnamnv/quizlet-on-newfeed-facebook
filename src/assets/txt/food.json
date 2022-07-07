@@ -1,79 +1,79 @@
 {
-  "id": 1,
+  "id": "1",
   "name":"Food & Drinks",
   "data": [
     {
-      "id": 1,
+      "id": "1",
       "front": "Glass of Coke",
       "back": "ly coca-cola"
     },
     {
-      "id": 2,
+      "id": "2",
       "front": "Iced tea",
       "back": "trà đá"
     },
     {
-      "id": 3,
+      "id": "3",
       "front": "Cold drinks",
       "back": "nước giải khát"
     },
     {
-      "id": 4,
+      "id": "4",
       "front": "Fruit punch",
       "back": "nước giải khát trái cây"
     },
     {
-      "id": 5,
+      "id": "5",
       "front": "Pitcher of beer",
       "back": "1 ca bia/ 1 bình bia"
     },
     {
-      "id": 6,
+      "id": "6",
       "front": "pancake",
       "back": "bánh kếp"
     },
     {
-      "id": 7,
+      "id": "7",
       "front": "Cup of coffee",
       "back": "1 tách cà phê"
     },
     {
-      "id": 8,
+      "id": "8",
       "front": "marinara sauce",
       "back": "sốt marinara (cà chua)"
     },
     {
-      "id": 9,
+      "id": "9",
       "front": "pepperoni",
       "back": "xúc xích bò và heo rắc thêm tiêu"
     },
     {
-      "id": 10,
+      "id": "10",
       "front": "leave a big tip",
       "back": "để lại tiền boa lớn"
     },
     {
-      "id": 11,
+      "id": "11",
       "front": "powder",
       "back": "bột"
     },
     {
-      "id": 12,
+      "id": "12",
       "front": "pea",
       "back": "đậu, đậu Hà Lan"
     },
     {
-      "id": 13,
+      "id": "13",
       "front": "pepper",
       "back": "tiêu"
     },
     {
-      "id": 14,
+      "id": "14",
       "front": "tomato",
       "back": "cà chua"
     },
     {
-      "id": 15,
+      "id": "15",
       "front": "potato",
       "back": "khoai tây"
     }

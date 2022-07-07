@@ -1,5 +1,5 @@
 import { Category } from "../models";
-
+import { v4 as uuidv4 } from "uuid";
 export function shuffleAray(array) {
   return array.sort(() => Math.random() - 0.5);
 }
@@ -9,7 +9,7 @@ export function convertToCategoryList(
   data: string | ArrayBuffer
 ) {
   const result: Category = {
-    name,
+    name: name || "New Category",
     data: [],
   };
   if (typeof data === "string") {
@@ -18,7 +18,7 @@ export function convertToCategoryList(
       const element = newArray[i];
       const [front, back] = element.split("|");
       result.data.push({
-        id: i,
+        id: uuidv4(),
         back: back || "Wrong format file",
         front: front || "Wrong format file",
       });

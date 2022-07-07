@@ -1,4 +1,5 @@
 import React, { useContext, useState } from "react";
+import { v4 as uuidv4 } from "uuid";
 import { convertToCategoryList } from "../utils/array";
 import {
   Context as CategoryContext,
@@ -14,6 +15,7 @@ import {
   Typography,
 } from "@material-ui/core";
 import ImportExportIcon from "@material-ui/icons/ImportExport";
+import Button from "./common/Button";
 
 export default () => {
   const { state, addNewCategory, setCurrentStatus } = useContext<
@@ -35,12 +37,16 @@ export default () => {
       const text = e.target.result;
       const newCategory = convertToCategoryList(name, text);
       addNewCategory({
-        newCategory: { id: state.categoryList.length, ...newCategory },
+        newCategory: { id: uuidv4(), ...newCategory },
       });
 
       setCurrentStatus({ currentStatus: ROOT_STATUS.LEARNING });
     };
     reader.readAsText(target.files[0]);
+  };
+
+  const handleCancelFormSubmit = () => {
+    setCurrentStatus({ currentStatus: ROOT_STATUS.LEARNING });
   };
 
   return (
@@ -69,7 +75,12 @@ export default () => {
           />
         </Box>
 
-        <Box textAlign={"right"}>
+        <Box
+          textAlign={"right"}
+          display="flex"
+          alignItems={"center"}
+          justifyContent={"flex-end"}
+        >
           <ButtonMUI
             component="label"
             variant="contained"
@@ -79,6 +90,13 @@ export default () => {
             Upload Txt
             <input type="file" accept=".txt" hidden onChange={showFile} />
           </ButtonMUI>
+          <Box ml={1}>
+            <Button
+              title="Cancel"
+              handleOnClick={handleCancelFormSubmit}
+              color={"secondary"}
+            />
+          </Box>
         </Box>
       </Container>
     </Box>

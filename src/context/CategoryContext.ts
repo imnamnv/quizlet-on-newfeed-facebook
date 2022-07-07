@@ -23,7 +23,7 @@ export const enum ROOT_STATUS {
 
 export interface InitState {
   state: {
-    currentCategory: number;
+    currentCategory: string;
     categoryList: Category[];
     currentStatus: ROOT_STATUS;
   };
@@ -31,17 +31,17 @@ export interface InitState {
 }
 
 export interface InitStateAction {
-  setCurrentCategory: (payload: { id: number }) => void;
+  setCurrentCategory: (payload: { id: string }) => void;
   setCurrentStatus: (payload: { currentStatus: ROOT_STATUS }) => void;
   addNewCategory: (payload: { newCategory: Category }) => void;
   updateCategory: (payload: { category: Category }) => void;
-  deleteCategory: (payload: { id: number }) => void;
+  deleteCategory: (payload: { id: string }) => void;
   setState: (payload: { initState: InitState }) => void;
 }
 
 const categoryReducer = (
   state: {
-    currentCategory: number;
+    currentCategory: string;
     categoryList: Category[];
     currentStatus: ROOT_STATUS;
   },
@@ -106,7 +106,7 @@ const categoryReducer = (
 
       const newState = {
         ...state,
-        currentCategory: 0,
+        currentCategory: "-1",
         categoryList: newCategoryList,
       };
 
@@ -187,7 +187,7 @@ export const { Provider, Context } = createDataContext(
     setState,
   },
   {
-    currentCategory: 0,
+    currentCategory: "0",
     categoryList: [jobInterView, food],
     currentStatus: ROOT_STATUS.LEARNING,
   }
