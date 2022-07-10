@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
-  "name": "Learning English on Facebook",
-  "description": "Block newfeed and Learning English on Facebook!",
+  "name": "Save time by blocking Newsfeed",
+  "description": "Save time by blocking Newsfeed. This extension made by NamNV",
   "version": "1.0.0",
   "icons": {
     "16": "icon.png",
@@ -9,7 +9,7 @@
     "128": "icon.png"
   },
   "action": {
-    "default_title": "Learning English Extension",
+    "default_title": "Save time by blocking Newsfeed",
     "default_icon": "icon.png"
   },
 

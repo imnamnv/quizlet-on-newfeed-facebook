@@ -10,17 +10,27 @@ function isAlreadyInjected() {
 
 let feed = document.querySelector<HTMLElement>("[role=feed]");
 let region = document.querySelector<HTMLElement>("[role=region]");
+let element = document.querySelector("html");
 
 const App = () => {
   const [rerender, setRerender] = useState(false);
 
   useEffect(() => {
     const interval = setInterval(() => {
+      const path = document.location.pathname;
+
+      if (path !== "/") {
+        element.dataset.nfeEnabled = "false";
+      } else {
+        element.dataset.nfeEnabled = "true";
+      }
+
       if (!isAlreadyInjected()) {
         feed = document.querySelector<HTMLElement>("[role=feed]");
         region = document.querySelector<HTMLElement>("[role=region]");
-        setRerender(true);
-        if (feed === null || region === null) return;
+        setRerender((old) => {
+          return !old;
+        });
       }
     }, 1000);
 
@@ -32,7 +42,7 @@ const App = () => {
   return (
     <div id="namnv">
       <Provider>
-        <Container feed={feed.parentElement} />
+        {feed !== null && <Container feed={feed.parentElement} />}
       </Provider>
     </div>
   );

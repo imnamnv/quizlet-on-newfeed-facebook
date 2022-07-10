@@ -21,3 +21,9 @@ div[aria-label=Tin]{
 	pointer-events: none !important;
 	height: 0 !important;
 }
+
+html:not([data-nfe-enabled="true"]) #nfe-container {
+	opacity: 0 !important;
+	pointer-events: none !important;
+	height: 0 !important;
+}
