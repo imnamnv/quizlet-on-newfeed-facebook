@@ -17,10 +17,10 @@ export function convertToCategoryList(
   };
   if (typeof data === "string") {
     const regexTermAndDefinition = new RegExp(
-      `${termAndDefinitionValue.replace(/\\n?\n?/g, "\r\n")}`
+      `${termAndDefinitionValue.replace(/\n?^\t/g, "\r\n")}`
     );
 
-    const regexRows = new RegExp(`${rowsValue.replace(/\\n?\n?/g, "\r\n")}`);
+    const regexRows = new RegExp(`${rowsValue.replace(/\n^\t?/g, "\r\n")}`);
 
     const newArray = data.split(regexRows);
 

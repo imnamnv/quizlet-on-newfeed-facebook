@@ -30,11 +30,11 @@ export default () => {
   const [name, setName] = useState("");
   const [fileName, setFileName] = useState("");
 
-  const [termAndDefinitionValue, setTermAndDefinitionValue] = useState("");
+  const [termAndDefinitionValue, setTermAndDefinitionValue] = useState("\\t");
   const [customTermAndDefinitionValue, setCustomTermAndDefinitionValue] =
     useState(" - ");
 
-  const [rowsValue, setRowsValue] = useState("");
+  const [rowsValue, setRowsValue] = useState("\\n");
   const [customRowsValue, setCustomRowsValue] = useState("\\n\\n");
 
   const [resultText, setResultText] = useState<string | ArrayBuffer>("");
