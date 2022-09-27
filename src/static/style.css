@@ -16,14 +16,33 @@ div.ego_column,
 /* div[aria-label="video chats that people can join"] */
 html:not([data-nfe-enabled="false"]) div[role=feed],
 div[aria-label=Stories],
-div[aria-label=Tin]{
+div[aria-label=Tin],
+div[role=tablist]
+{
 	opacity: 0 !important;
 	pointer-events: none !important;
 	height: 0 !important;
+	min-height: 0 !important;
 }
 
-html:not([data-nfe-enabled="true"]) #nfe-container {
+/* html:not([data-nfe-enabled="true"]) #nfe-container {
 	opacity: 0 !important;
 	pointer-events: none !important;
 	height: 0 !important;
+} */
+
+
+/* New Facebook (2020) */
+html:not([data-nfe-enabled='false']) #ssrb_feed_start + div, /* For home and groups feeds */
+div[data-pagelet='MainFeed'], /* For watch and marketplace feeds */
+div[aria-label='Gaming'][role='main'],
+div[aria-label='Stories'] {
+	position: absolute !important;
+	opacity: 0 !important;
+	pointer-events: none !important;
+	width: 0 !important;
+	height: 0 !important;
 }
+/* html:not([data-nfe-enabled='false']) {
+	--notification-badge: var(--base-blue);
+} */

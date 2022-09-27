@@ -26,7 +26,10 @@ export function convertToCategoryList(
     for (let i = 0; i < newArray.length; i++) {
       const element = newArray[i];
       if (element) {
-        const [front, back] = element.split(regexTermAndDefinition);
+        let [front, back] = element.split(regexTermAndDefinition);
+        front = front?.replace(/\r\n/g, "<br>");
+        back = back?.replace(/\r\n/g, "<br>");
+
         result.data.push({
           id: uuidv4(),
           back: back || "Wrong format file",

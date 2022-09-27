@@ -8,7 +8,9 @@ function isAlreadyInjected() {
   return document.querySelector("#nfe-container") !== null;
 }
 
-let feed = document.querySelector<HTMLElement>("[role=feed]");
+// let feed = document.querySelector<HTMLElement>("[role=feed]");
+let feed = document.querySelector<HTMLElement>("#ssrb_feed_start + div");
+
 let region = document.querySelector<HTMLElement>("[role=region]");
 let element = document.querySelector("html");
 
