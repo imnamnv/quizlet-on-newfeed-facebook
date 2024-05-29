@@ -1,7 +1,6 @@
-
 /* This hides the news feed before the JS kicks in */
-div[id^='explorefeed_main_stream'],
-div[id^='topnews_main_stream'],
+div[id^="explorefeed_main_stream"],
+div[id^="topnews_main_stream"],
 div.ticker_stream,
 div.ego_column,
 #pagelet_home_stream,
@@ -10,39 +9,17 @@ div.ego_column,
 #fb_stories_card_root,
 #pagelet_gaming_destination_rhc,
 #pagelet_canvas_nav_content {
-	opacity: 0 !important;
-	pointer-events: none !important;
-}
-/* div[aria-label="video chats that people can join"] */
-html:not([data-nfe-enabled="false"]) div[role=feed],
-div[aria-label=Stories],
-div[aria-label=Tin],
-div[role=tablist]
-{
-	opacity: 0 !important;
-	pointer-events: none !important;
-	height: 0 !important;
-	min-height: 0 !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
 }
 
-/* html:not([data-nfe-enabled="true"]) #nfe-container {
-	opacity: 0 !important;
-	pointer-events: none !important;
-	height: 0 !important;
-} */
-
-
-/* New Facebook (2020) */
-html:not([data-nfe-enabled='false']) #ssrb_feed_start + div, /* For home and groups feeds */
-div[data-pagelet='MainFeed'], /* For watch and marketplace feeds */
-div[aria-label='Gaming'][role='main'],
-div[aria-label='Stories'] {
-	position: absolute !important;
-	opacity: 0 !important;
-	pointer-events: none !important;
-	width: 0 !important;
-	height: 0 !important;
+/* 29/04/2024 */
+div[aria-label="Stories"],
+div[aria-label="Tin"],
+div[role="tablist"],
+div.x1hc1fzr.x1unhpq9.x6o7n8i {
+  opacity: 0 !important;
+  pointer-events: none !important;
+  height: 0 !important;
+  min-height: 0 !important;
 }
-/* html:not([data-nfe-enabled='false']) {
-	--notification-badge: var(--base-blue);
-} */

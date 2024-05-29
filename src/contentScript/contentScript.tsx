@@ -8,28 +8,17 @@ function isAlreadyInjected() {
   return document.querySelector("#nfe-container") !== null;
 }
 
-// let feed = document.querySelector<HTMLElement>("[role=feed]");
-let feed = document.querySelector<HTMLElement>("#ssrb_feed_start + div");
-
-let region = document.querySelector<HTMLElement>("[role=region]");
-let element = document.querySelector("html");
+let feed = document.querySelector<HTMLElement>("div.x1hc1fzr.x1unhpq9.x6o7n8i");
 
 const App = () => {
   const [rerender, setRerender] = useState(false);
 
   useEffect(() => {
     const interval = setInterval(() => {
-      const path = document.location.pathname;
-
-      if (path !== "/") {
-        element.dataset.nfeEnabled = "false";
-      } else {
-        element.dataset.nfeEnabled = "true";
-      }
-
       if (!isAlreadyInjected()) {
-        feed = document.querySelector<HTMLElement>("[role=feed]");
-        region = document.querySelector<HTMLElement>("[role=region]");
+        feed = document.querySelector<HTMLElement>(
+          "div.x1hc1fzr.x1unhpq9.x6o7n8i"
+        );
         setRerender((old) => {
           return !old;
         });

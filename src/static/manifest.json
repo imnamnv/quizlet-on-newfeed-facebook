@@ -14,25 +14,12 @@
   },
   "content_scripts": [
     {
-      "css": [
-        "style.css"
-      ],
-      "matches": [
-        "http://www.facebook.com/*",
-        "https://www.facebook.com/*",
-        "http://web.facebook.com/*",
-        "https://web.facebook.com/*"
-      ],
-      "js": [
-        "contentScript.js"
-      ],
+      "css": ["style.css"],
+      "matches": ["https://www.facebook.com/*", "https://web.facebook.com/*"],
+      "js": ["contentScript.js"],
       "run_at": "document_idle"
     }
   ],
-  "permissions": [
-    "storage"
-  ],
-  "host_permissions": [
-    "*://*/*"
-  ]
+  "permissions": ["storage"],
+  "host_permissions": ["*://*/*"]
 }
