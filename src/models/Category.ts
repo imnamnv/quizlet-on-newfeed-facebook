@@ -1,7 +1,7 @@
 export interface Item {
   id?: string;
-  front: string;
-  back: string;
+  frontHTML: string;
+  backHTML: string;
 }
 
 export interface Category {

@@ -11,7 +11,7 @@ export function convertToCategoryList(
   termAndDefinitionValue: string,
   rowsValue: string
 ) {
-  const result: Category = {
+  const result = {
     name: name || "New Category",
     data: [],
   };
@@ -26,14 +26,12 @@ export function convertToCategoryList(
     for (let i = 0; i < newArray.length; i++) {
       const element = newArray[i];
       if (element) {
-        let [front, back] = element.split(regexTermAndDefinition);
-        front = front?.replace(/\r\n/g, "<br>");
-        back = back?.replace(/\r\n/g, "<br>");
+        let [frontHTML, backHTML] = element.split(regexTermAndDefinition);
 
         result.data.push({
           id: uuidv4(),
-          back: back || "Wrong format file",
-          front: front || "Wrong format file",
+          backHTML: backHTML || "Wrong format file",
+          frontHTML: frontHTML || "Wrong format file",
         });
       }
     }

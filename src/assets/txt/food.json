@@ -1,82 +1,81 @@
 {
   "id": "1",
-  "name":"Food & Drinks",
+  "name": "Food & Drinks",
   "data": [
     {
       "id": "1",
-      "front": "Glass of Coke",
-      "back": "ly coca-cola"
+      "frontHTML": "Glass of Coke",
+      "backHTML": "ly coca-cola"
     },
     {
       "id": "2",
-      "front": "Iced tea",
-      "back": "trà đá"
+      "frontHTML": "Iced tea",
+      "backHTML": "trà đá"
     },
     {
       "id": "3",
-      "front": "Cold drinks",
-      "back": "nước giải khát"
+      "frontHTML": "Cold drinks",
+      "backHTML": "nước giải khát"
     },
     {
       "id": "4",
-      "front": "Fruit punch",
-      "back": "nước giải khát trái cây"
+      "frontHTML": "Fruit punch",
+      "backHTML": "nước giải khát trái cây"
     },
     {
       "id": "5",
-      "front": "Pitcher of beer",
-      "back": "1 ca bia/ 1 bình bia"
+      "frontHTML": "Pitcher of beer",
+      "backHTML": "1 ca bia/ 1 bình bia"
     },
     {
       "id": "6",
-      "front": "pancake",
-      "back": "bánh kếp"
+      "frontHTML": "pancake",
+      "backHTML": "bánh kếp"
     },
     {
       "id": "7",
-      "front": "Cup of coffee",
-      "back": "1 tách cà phê"
+      "frontHTML": "Cup of coffee",
+      "backHTML": "1 tách cà phê"
     },
     {
       "id": "8",
-      "front": "marinara sauce",
-      "back": "sốt marinara (cà chua)"
+      "frontHTML": "marinara sauce",
+      "backHTML": "sốt marinara (cà chua)"
     },
     {
       "id": "9",
-      "front": "pepperoni",
-      "back": "xúc xích bò và heo rắc thêm tiêu"
+      "frontHTML": "pepperoni",
+      "backHTML": "xúc xích bò và heo rắc thêm tiêu"
     },
     {
       "id": "10",
-      "front": "leave a big tip",
-      "back": "để lại tiền boa lớn"
+      "frontHTML": "leave a big tip",
+      "backHTML": "để lại tiền boa lớn"
     },
     {
       "id": "11",
-      "front": "powder",
-      "back": "bột"
+      "frontHTML": "powder",
+      "backHTML": "bột"
     },
     {
       "id": "12",
-      "front": "pea",
-      "back": "đậu, đậu Hà Lan"
+      "frontHTML": "pea",
+      "backHTML": "đậu, đậu Hà Lan"
     },
     {
       "id": "13",
-      "front": "pepper",
-      "back": "tiêu"
+      "frontHTML": "pepper",
+      "backHTML": "tiêu"
     },
     {
       "id": "14",
-      "front": "tomato",
-      "back": "cà chua"
+      "frontHTML": "tomato",
+      "backHTML": "cà chua"
     },
     {
       "id": "15",
-      "front": "potato",
-      "back": "khoai tây"
+      "frontHTML": "potato",
+      "backHTML": "khoai tây"
     }
   ]
 }
-

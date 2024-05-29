@@ -1,82 +1,81 @@
 {
   "id": "0",
-  "name":"Job Interview",
+  "name": "Job Interview",
   "data": [
     {
       "id": "1",
-      "front": "confident",
-      "back": "tự tin"
+      "frontHTML": "confident",
+      "backHTML": "tự tin"
     },
     {
       "id": "2",
-      "front": "ambitious",
-      "back": "tham vọng"
+      "frontHTML": "ambitious",
+      "backHTML": "tham vọng"
     },
     {
       "id": "3",
-      "front": "reliable",
-      "back": "đáng tin cậy"
+      "frontHTML": "reliable",
+      "backHTML": "đáng tin cậy"
     },
     {
       "id": "4",
-      "front": "punctual",
-      "back": "đúng giờ"
+      "frontHTML": "punctual",
+      "backHTML": "đúng giờ"
     },
     {
       "id": "5",
-      "front": "flexible",
-      "back": "linh hoạt"
+      "frontHTML": "flexible",
+      "backHTML": "linh hoạt"
     },
     {
       "id": "6",
-      "front": "resourceful",
-      "back": "có tài xoay xở, tháo vát"
+      "frontHTML": "resourceful",
+      "backHTML": "có tài xoay xở, tháo vát"
     },
     {
       "id": "7",
-      "front": "competent",
-      "back": "thạo việc"
+      "frontHTML": "competent",
+      "backHTML": "thạo việc"
     },
     {
       "id": "8",
-      "front": "meticulous",
-      "back": "tỉ mỉ"
+      "frontHTML": "meticulous",
+      "backHTML": "tỉ mỉ"
     },
     {
       "id": "9",
-      "front": "creative",
-      "back": "sáng tạo"
+      "frontHTML": "creative",
+      "backHTML": "sáng tạo"
     },
     {
       "id": "10",
-      "front": "responsible",
-      "back": "có trách nhiệm"
+      "frontHTML": "responsible",
+      "backHTML": "có trách nhiệm"
     },
     {
       "id": "11",
-      "front": "work under pressure",
-      "back": "làm việc dưới áp lực"
+      "frontHTML": "work under pressure",
+      "backHTML": "làm việc dưới áp lực"
     },
     {
       "id": "12",
-      "front": "consultant",
-      "back": "người tư vấn, cố vấn"
+      "frontHTML": "consultant",
+      "backHTML": "người tư vấn, cố vấn"
     },
     {
       "id": "13",
-      "front": "professional",
-      "back": "chuyên nghiệp, chuyên gia"
+      "frontHTML": "professional",
+      "backHTML": "chuyên nghiệp, chuyên gia"
     },
     {
       "id": "14",
-      "front": "career",
-      "back": "sự nghiệp"
+      "frontHTML": "career",
+      "backHTML": "sự nghiệp"
     },
     {
       "id": "15",
-      "front": "gain additional skills",
-      "back": "có thêm kỹ năng"
+      "frontHTML": "gain additional skills",
+      "backHTML": "có thêm kỹ năng"
     }
   ]
 }
-

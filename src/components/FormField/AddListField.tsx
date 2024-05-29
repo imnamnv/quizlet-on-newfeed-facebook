@@ -28,8 +28,8 @@ export default ({ name, control, label }: ItemListFieldProps) => {
           handleOnClick={() => {
             append({
               id: uuidv4(),
-              front: "",
-              back: "",
+              frontHTML: "",
+              backHTML: "",
             });
           }}
         />
@@ -41,7 +41,7 @@ export default ({ name, control, label }: ItemListFieldProps) => {
             <Typography variant="subtitle1">Item {idx + 1}</Typography>
             <Box marginY={1}>
               <InputField
-                name={`${name}.${idx}.front` as const}
+                name={`${name}.${idx}.frontHTML` as const}
                 control={control}
                 label="Front"
               />
@@ -49,7 +49,7 @@ export default ({ name, control, label }: ItemListFieldProps) => {
 
             <Box marginY={1}>
               <InputField
-                name={`${name}.${idx}.back` as const}
+                name={`${name}.${idx}.backHTML` as const}
                 control={control}
                 label="Back"
               />

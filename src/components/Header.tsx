@@ -16,8 +16,6 @@ import {
   ROOT_STATUS,
 } from "../context/CategoryContext";
 import Dialog from "./common/Dialog";
-import { getInitState } from "../utils/storage";
-import { convertToCategoryList } from "../utils/array";
 
 const useStyles = makeStyles((theme: Theme) => ({
   root: {

@@ -18,7 +18,7 @@ export default () => {
 
   const initialValues: Category = {
     name: "",
-    data: [{ id: uuidv4(), front: "", back: "" }],
+    data: [{ id: uuidv4(), frontHTML: "", backHTML: "" }],
   };
 
   const handleCategoryFormSubmit = (formValue: Category) => {

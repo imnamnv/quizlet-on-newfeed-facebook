@@ -14,10 +14,26 @@ export default () => {
     return category?.id === state.currentCategory;
   });
 
+  console.log("shuffleAray(data?.data", shuffleAray(data?.data));
   return (
     <FlashcardArray
-      style={{ width: "100%" }}
       cards={shuffleAray(data?.data || [])}
+      frontContentStyle={{
+        color: "black",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        fontSize: 30,
+      }}
+      backContentStyle={{
+        backgroundColor: "white",
+        height: "auto",
+        padding: 20,
+        fontSize: 30,
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+      }}
     />
   );
 };
